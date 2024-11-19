@@ -1,2 +1,2 @@
-run-server-local:
+run-server:
 	@go run cmd/students-api/main.go -config config/local.yaml
