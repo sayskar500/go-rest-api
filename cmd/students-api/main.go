@@ -30,6 +30,11 @@ func main() {
 	// setup router
 	router := http.NewServeMux()
 
+	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("Welcome to the Student API! Available endpoints: POST /api/students, GET /api/students/{id}, GET /api/students"))
+	})
+
 	router.HandleFunc("POST /api/students", student.New(storage))
 	router.HandleFunc("GET /api/students/{id}", student.GetByID(storage))
 	router.HandleFunc("GET /api/students", student.GetList(storage))
